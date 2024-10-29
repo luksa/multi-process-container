@@ -13,6 +13,9 @@ deploy-no-probe:
 deploy-probe-timeout:
 	kubectl apply -f multi-process-container-probe-timeout.yaml
 
+kill-http-server:
+	kubectl exec multi-process-container -- pkill -f "http-server"
+
 undeploy:
 	kubectl delete -f multi-process-container.yaml
 
