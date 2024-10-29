@@ -12,7 +12,7 @@ However, when the "main" process in the container is killed, the pod will be mar
    kubectl apply -f https://raw.githubusercontent.com/luksa/oom-in-multi-process-container/refs/heads/master/multi-process-container-noprobe.yaml
    ```
 
-Wait for the pod to be running.
+   Wait for the pod to be running.
 
 2. Send two requests to the pod
 
