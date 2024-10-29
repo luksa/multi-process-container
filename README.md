@@ -9,7 +9,7 @@ However, when the "main" process in the container is killed, the pod will be mar
 1. Deploy the pod 
 
 ```bash
-kubectl apply -f multi-process-container-noprobe.yaml
+kubectl apply -f https://raw.githubusercontent.com/luksa/oom-in-multi-process-container/refs/heads/master/multi-process-container-noprobe.yaml
 ```
 
 Wait for the pod to be running.
