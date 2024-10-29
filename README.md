@@ -59,7 +59,27 @@ However, when the "main" process in the container is killed, the pod will be mar
    ```
    
    Notice that the pod is in the `OOMKilled` state, even though the `http-server` process was killed by the user, not by the OOM killer.
-
+   Note: if the container has already been restarted, then the status will already have changed to `Running`. To see the `OOMKilled` status, check the YAML:
+   ```bash
+   $ kubectl get pod multi-process-container -oyaml | yq .status.containerStatuses
+   - containerID: cri-o://d65beb78a5f984e170e21a8b909978532686b1b6903cfc429a3023d75308dbf7
+     image: quay.io/luksa/multi-process-container:latest
+     imageID: quay.io/luksa/multi-process-container@sha256:2b98e47ee87c040743b551f27206d86b4ee3ac7d262c2827baeb2d2ff2661799
+     lastState:
+       terminated:
+         containerID: cri-o://4de360ee2cd2fc1d2c7ee7766f379e2fe445eebcccfa713d8268971314b8a274
+         exitCode: 143
+         finishedAt: "2024-10-29T10:33:25Z"
+         reason: OOMKilled
+         startedAt: "2024-10-29T10:31:53Z"
+     name: main
+     ready: true
+     restartCount: 1
+     started: true
+     state:
+       running:
+         startedAt: "2024-10-29T10:33:28Z"
+   ```
 
 # Further examples
 
